@@ -123,7 +123,7 @@ public class Book implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book that = (Book) o;
-        return id == that.id &&
+        return
                 title.equals(that.title) &&
                 authors.equals(that.authors) &&
                 year == that.year &&
@@ -138,7 +138,6 @@ public class Book implements Serializable {
     public int hashCode() {
         int result = 17;
 
-        result = result * 31 + (int) id;
         result = result * 31 + title.hashCode();
         result = result * 31 + authors.hashCode();
         result = result * 31 + year;

@@ -9,6 +9,7 @@ import by.epam.project.connection_pool.ConnectionPool;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -497,7 +498,8 @@ public class SqlLibDAOImpl implements LibDAO {
 
             if (foundBook != null && !foundBook.getAuthors().isEmpty() && foundBook.getAuthors().get(0) != null) {
                 foundAuthors = foundBook.getAuthors();
-                if (compareAuthors(authors, foundAuthors)) {
+
+                if (Arrays.equals(authors.toArray(), foundAuthors.toArray())) {
                     return foundBook;
                 }
             } else {
@@ -760,33 +762,6 @@ public class SqlLibDAOImpl implements LibDAO {
         } catch (SQLException e) {
             throw new SQLException("getLastInsertId(): " + e.getMessage());
         }
-    }
-
-    /**
-     * Метод сравнивает два списка авторов.
-     * <p>
-     * Авторы в передаваемых списках не обязаны иметь идентификационные номера. Сравнение происходит по имени,
-     * фамилии,отчеству.
-     *
-     * @param authors1 первый список авторов
-     * @param authors2 второй список авторов
-     * @return <code>true</code> когда списки авторов идентичны, <code>false</code> в противном случае
-     */
-    private boolean compareAuthors(List<Author> authors1, List<Author> authors2) {
-        boolean flag1 = false;
-        boolean flag2 = true;
-        for (Author author1 : authors1) {
-            for (Author author2 : authors2) {
-                flag1 = author1.getSurname().equals(author2.getSurname()) &&
-                        author1.getName().equals(author2.getName()) &&
-                        author1.getPatronymic().equals(author2.getPatronymic());
-                if (flag1) {
-                    break;
-                }
-            }
-            flag2 = flag2 && flag1;
-        }
-        return flag2;
     }
 
     /**

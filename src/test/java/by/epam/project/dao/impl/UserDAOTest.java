@@ -51,12 +51,7 @@ public class UserDAOTest {
             actualUser = userDAO.saveUser(expectedUser, expectedAccess);
             userDAO.deleteUser(actualUser.getId());
 
-            Assert.assertEquals(expectedUser.getSurname(), actualUser.getSurname());
-            Assert.assertEquals(expectedUser.getName(), actualUser.getName());
-            Assert.assertEquals(expectedUser.getPatronymic(), actualUser.getPatronymic());
-            Assert.assertEquals(expectedUser.getBirthday(), actualUser.getBirthday());
-            Assert.assertEquals(expectedUser.getPhone(), actualUser.getPhone());
-            Assert.assertEquals(expectedUser.getRole(), actualUser.getRole());
+            Assert.assertEquals(expectedUser, actualUser);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -72,12 +67,7 @@ public class UserDAOTest {
             actualUser = userDAO.takeByAccessInfo(expectedAccess.getEmail(), password);
             userDAO.deleteUser(actualUser.getId());
 
-            Assert.assertEquals(expectedUser.getSurname(), actualUser.getSurname());
-            Assert.assertEquals(expectedUser.getName(), actualUser.getName());
-            Assert.assertEquals(expectedUser.getPatronymic(), actualUser.getPatronymic());
-            Assert.assertEquals(expectedUser.getBirthday(), actualUser.getBirthday());
-            Assert.assertEquals(expectedUser.getPhone(), actualUser.getPhone());
-            Assert.assertEquals(expectedUser.getRole(), actualUser.getRole());
+            Assert.assertEquals(expectedUser, actualUser);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -93,12 +83,7 @@ public class UserDAOTest {
             actualUser = userDAO.takeById(actualUser.getId());
             userDAO.deleteUser(actualUser.getId());
 
-            Assert.assertEquals(expectedUser.getSurname(), actualUser.getSurname());
-            Assert.assertEquals(expectedUser.getName(), actualUser.getName());
-            Assert.assertEquals(expectedUser.getPatronymic(), actualUser.getPatronymic());
-            Assert.assertEquals(expectedUser.getBirthday(), actualUser.getBirthday());
-            Assert.assertEquals(expectedUser.getPhone(), actualUser.getPhone());
-            Assert.assertEquals(expectedUser.getRole(), actualUser.getRole());
+            Assert.assertEquals(expectedUser, actualUser);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -114,12 +99,7 @@ public class UserDAOTest {
             actualUser = userDAO.takeByPhoneEmail(actualUser.getPhone(), expectedAccess.getEmail());
             userDAO.deleteUser(actualUser.getId());
 
-            Assert.assertEquals(expectedUser.getSurname(), actualUser.getSurname());
-            Assert.assertEquals(expectedUser.getName(), actualUser.getName());
-            Assert.assertEquals(expectedUser.getPatronymic(), actualUser.getPatronymic());
-            Assert.assertEquals(expectedUser.getBirthday(), actualUser.getBirthday());
-            Assert.assertEquals(expectedUser.getPhone(), actualUser.getPhone());
-            Assert.assertEquals(expectedUser.getRole(), actualUser.getRole());
+            Assert.assertEquals(expectedUser, actualUser);
         } catch (DAOException e) {
             logger.error(e);
         }

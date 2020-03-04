@@ -101,7 +101,7 @@ public class CardNote implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CardNote that = (CardNote) o;
-        return id == that.id &&
+        return
                 initialDate.equals(that.initialDate) &&
                 finalDate.equals(that.finalDate) &&
                 destination.equals(that.destination) &&
@@ -113,7 +113,6 @@ public class CardNote implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result = result * 31 + (int) id;
         result = result * 31 + initialDate.hashCode();
         result = result * 31 + finalDate.hashCode();
         result = result * 31 + destination.hashCode();

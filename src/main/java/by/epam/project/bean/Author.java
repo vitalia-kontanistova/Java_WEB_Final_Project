@@ -2,7 +2,7 @@ package by.epam.project.bean;
 
 import java.io.Serializable;
 
-public class Author implements Serializable {
+public class Author implements Serializable{
     private static final long serialVersionUID = 1L;
 
     private long id;
@@ -73,7 +73,7 @@ public class Author implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Author that = (Author) o;
-        return id == that.id &&
+        return
                 name.equals(that.name) &&
                 surname.equals(that.surname) &&
                 patronymic.equals(that.patronymic);
@@ -82,7 +82,6 @@ public class Author implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result = result * 31 + (int) id;
         result = result * 31 + name.hashCode();
         result = result * 31 + surname.hashCode();
         result = result * 31 + patronymic.hashCode();

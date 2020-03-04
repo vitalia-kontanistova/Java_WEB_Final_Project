@@ -111,7 +111,7 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User that = (User) o;
-        return id == that.id &&
+        return
                 surname.equals(that.surname) &&
                 name.equals(that.name) &&
                 patronymic.equals(that.patronymic) &&
@@ -123,7 +123,6 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result = result * 31 + (int) id;
         result = result * 31 + surname.hashCode();
         result = result * 31 + name.hashCode();
         result = result * 31 + patronymic.hashCode();

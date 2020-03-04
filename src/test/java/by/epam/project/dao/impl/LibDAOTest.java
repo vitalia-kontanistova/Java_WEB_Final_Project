@@ -61,16 +61,7 @@ public class LibDAOTest {
             actualBook = libDAO.saveBook(expectedBook);
             libDAO.deleteBook(actualBook.getId());
 
-            Assert.assertEquals(expectedBook.getTitle(), actualBook.getTitle());
-            Assert.assertEquals(expectedBook.getAuthors().get(0).getSurname(), actualBook.getAuthors().get(0).getSurname());
-            Assert.assertEquals(expectedBook.getAuthors().get(0).getName(), actualBook.getAuthors().get(0).getName());
-            Assert.assertEquals(expectedBook.getAuthors().get(0).getPatronymic(), actualBook.getAuthors().get(0).getPatronymic());
-            Assert.assertEquals(expectedBook.getYear(), actualBook.getYear());
-            Assert.assertEquals(expectedBook.getLang(), actualBook.getLang());
-            Assert.assertEquals(expectedBook.getNumberOfPages(), actualBook.getNumberOfPages());
-            Assert.assertEquals(expectedBook.getQuantity(), actualBook.getQuantity());
-            Assert.assertEquals(expectedBook.getAvailableBooks(), actualBook.getAvailableBooks());
-            Assert.assertEquals(expectedBook.getAnnotation(), actualBook.getAnnotation());
+            Assert.assertEquals(expectedBook, actualBook);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -85,16 +76,7 @@ public class LibDAOTest {
             actualBook = libDAO.takeBookById(actualBook.getId());
             libDAO.deleteBook(actualBook.getId());
 
-            Assert.assertEquals(expectedBook.getTitle(), actualBook.getTitle());
-            Assert.assertEquals(expectedBook.getAuthors().get(0).getSurname(), actualBook.getAuthors().get(0).getSurname());
-            Assert.assertEquals(expectedBook.getAuthors().get(0).getName(), actualBook.getAuthors().get(0).getName());
-            Assert.assertEquals(expectedBook.getAuthors().get(0).getPatronymic(), actualBook.getAuthors().get(0).getPatronymic());
-            Assert.assertEquals(expectedBook.getYear(), actualBook.getYear());
-            Assert.assertEquals(expectedBook.getLang(), actualBook.getLang());
-            Assert.assertEquals(expectedBook.getNumberOfPages(), actualBook.getNumberOfPages());
-            Assert.assertEquals(expectedBook.getQuantity(), actualBook.getQuantity());
-            Assert.assertEquals(expectedBook.getAvailableBooks(), actualBook.getAvailableBooks());
-            Assert.assertEquals(expectedBook.getAnnotation(), actualBook.getAnnotation());
+            Assert.assertEquals(expectedBook, actualBook);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -136,8 +118,6 @@ public class LibDAOTest {
         }
     }
 
-    ////////////////////////////////////////////////////
-
     @Test
     public void saveCardNoteTest() {
         CardNote actualNote;
@@ -150,32 +130,7 @@ public class LibDAOTest {
             libDAO.updateNoteActivity(actualNote.getId());
             libDAO.deleteBook(actualBook.getId());
 
-            Assert.assertEquals(expectedNote.getInitialDate(), actualNote.getInitialDate());
-            Assert.assertEquals(expectedNote.getFinalDate(), actualNote.getFinalDate());
-            Assert.assertEquals(expectedNote.getDestination(), actualNote.getDestination());
-            Assert.assertEquals(expectedNote.isActive(), actualNote.isActive());
-
-            Assert.assertEquals(expectedNote.getBook().getTitle(),
-                    actualNote.getBook().getTitle());
-            Assert.assertEquals(expectedNote.getBook().getYear(),
-                    actualNote.getBook().getYear());
-            Assert.assertEquals(expectedNote.getBook().getLang(),
-                    actualNote.getBook().getLang());
-            Assert.assertEquals(expectedNote.getBook().getNumberOfPages(),
-                    actualNote.getBook().getNumberOfPages());
-            Assert.assertEquals(expectedNote.getBook().getQuantity(),
-                    actualNote.getBook().getQuantity());
-            Assert.assertEquals(expectedNote.getBook().getAvailableBooks(),
-                    actualNote.getBook().getAvailableBooks());
-            Assert.assertEquals(expectedNote.getBook().getAnnotation(),
-                    actualNote.getBook().getAnnotation());
-
-            Assert.assertEquals(expectedNote.getBook().getAuthors().get(0).getSurname(),
-                    actualNote.getBook().getAuthors().get(0).getSurname());
-            Assert.assertEquals(expectedNote.getBook().getAuthors().get(0).getName(),
-                    actualNote.getBook().getAuthors().get(0).getName());
-            Assert.assertEquals(expectedNote.getBook().getAuthors().get(0).getPatronymic(),
-                    actualNote.getBook().getAuthors().get(0).getPatronymic());
+            Assert.assertEquals(expectedNote, actualNote);
         } catch (DAOException e) {
             logger.error(e);
         }
@@ -194,32 +149,13 @@ public class LibDAOTest {
             libDAO.updateNoteActivity(actualNote.getId());
             libDAO.deleteBook(actualBook.getId());
 
+            actualNote.getBook().setAvailableBooks(1);
             Assert.assertEquals(expectedNote.getInitialDate(), actualNote.getInitialDate());
             Assert.assertEquals(expectedNote.getFinalDate(), actualNote.getFinalDate());
             Assert.assertEquals(expectedNote.getDestination(), actualNote.getDestination());
             Assert.assertEquals(expectedNote.isActive(), actualNote.isActive());
-
-            Assert.assertEquals(expectedNote.getBook().getTitle(),
-                    actualNote.getBook().getTitle());
-            Assert.assertEquals(expectedNote.getBook().getYear(),
-                    actualNote.getBook().getYear());
-            Assert.assertEquals(expectedNote.getBook().getLang(),
-                    actualNote.getBook().getLang());
-            Assert.assertEquals(expectedNote.getBook().getNumberOfPages(),
-                    actualNote.getBook().getNumberOfPages());
-            Assert.assertEquals(expectedNote.getBook().getQuantity(),
-                    actualNote.getBook().getQuantity());
-            Assert.assertEquals(expectedNote.getBook().getAvailableBooks(),
-                    actualNote.getBook().getAvailableBooks() + 1);
-            Assert.assertEquals(expectedNote.getBook().getAnnotation(),
-                    actualNote.getBook().getAnnotation());
-
-            Assert.assertEquals(expectedNote.getBook().getAuthors().get(0).getSurname(),
-                    actualNote.getBook().getAuthors().get(0).getSurname());
-            Assert.assertEquals(expectedNote.getBook().getAuthors().get(0).getName(),
-                    actualNote.getBook().getAuthors().get(0).getName());
-            Assert.assertEquals(expectedNote.getBook().getAuthors().get(0).getPatronymic(),
-                    actualNote.getBook().getAuthors().get(0).getPatronymic());
+            Assert.assertEquals(expectedNote.getBook(),actualNote.getBook());
+            Assert.assertEquals(expectedNote.getUserId(),actualNote.getUserId());
         } catch (DAOException e) {
             logger.error(e);
         }
