@@ -46,7 +46,6 @@
                              style="height: 22px; background-color: inherit;">
                     </button>
                     <div class="dropdown-menu">
-
                         <form method="post" action="Controller">
                             <input type="hidden" name="command" value="change_language"/>
                             <input type="hidden" name="local" value="ru"/>
@@ -71,7 +70,7 @@
             <li class="nav-item">
                 <input type="search" class="form-control mb-2 mr-sm-2"
                        placeholder="<fmt:message bundle="${loc}" key="local.phrase.find_book"/>..."
-                       id="part_of_book_title" oninput="proc()">
+                       id="part_of_book_title" onchange="proc()" onclick="this.value=''">
             </li>
             <li class="nav-item">
                 <a href="${pageContext.request.contextPath}/Controller?command=take_book_by_part_of_title&part_of_book_title="
@@ -79,12 +78,13 @@
                     <fmt:message bundle="${loc}" key="local.phrase.search"/> </a>
 
                 <script type="text/javascript">
+                    defaultHref = "${pageContext.request.contextPath}/Controller?command=take_book_by_part_of_title&part_of_book_title=";
+
                     function proc() {
-                        document.getElementById('current_link').href +=
+                        document.getElementById('current_link').href = defaultHref +
                             document.getElementById('part_of_book_title').value;
                     }
                 </script>
-
             </li>
             <li class="nav-item">
                 <a href="${pageContext.request.contextPath}/Controller?command=sign_out" class="btn btn-secondary"

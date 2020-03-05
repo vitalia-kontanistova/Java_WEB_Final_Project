@@ -36,13 +36,18 @@ public class TakeBookByPartOfTitle implements Command {
         try {
             User mainUser = (User) req.getSession().getAttribute(ParameterName.MAIN_USER);
             String title = req.getParameter(ParameterName.BOOK_PART_OF_TITLE);
-
-            List<Book> books = libService.takeBookByPartOfTitle(title);
             String page = JSPPageName.INDEX_PAGE;
+
+            List<Book> books;
+            if (!title.isEmpty()) {
+                books = libService.takeBookByPartOfTitle(title);
+            } else {
+               books = libService.takeAllBooks();
+            }
 
             if (books != null && mainUser != null) {
                 req.setAttribute(ParameterName.BOOKS, books);
-                page = JSPPageName.BOOK_SEARCH_RESULT_PAGE;
+                page = JSPPageName.BOOK_CATALOG_PAGE;
             }
 
             RequestDispatcher dispatcher = req.getRequestDispatcher(page);
